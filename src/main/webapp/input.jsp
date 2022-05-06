@@ -2,6 +2,11 @@
   pageEncoding="UTF-8"%>
 <%
     // 必要な処理を記述してください。
+    request.setCharacterEncoding("UTF-8");
+    String userId = request.getParameter("userId");
+    String userName = request.getParameter("userName");
+    String age = request.getParameter("age");
+
 
 %>
 <!DOCTYPE html>

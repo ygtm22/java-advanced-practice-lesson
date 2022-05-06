@@ -3,7 +3,50 @@
   pageEncoding="UTF-8"%>
 <%
   //必要な処理を記述してください。
+  request.setCharacterEncoding("UTF-8");
+  String userId = request.getParameter("userId");
+  String userName = request.getParameter("userName");
+  String age = request.getParameter("age");
+  
+  if(userId == null || userId.isEmpty()){
+	  userId = "0";
+  }
+  if(userName == null || userName.isEmpty()){
+	  userName = "0";
+  }
+  if(age == null || age.isEmpty()){
+	  age = "0";
+  }
+  
+  int ag = Integer.parseInt(age);
 
+  User user = new User(userId, userName, ag);
+  
+  User[] users = new User[5];
+  
+  if (session.getAttribute("User") == null) {
+      session.setAttribute("User", users);
+  }
+  
+  users = (User[]) session.getAttribute("User");
+  if (users == null){
+	  users = new User[5];
+  }
+  
+  String result = "これ以上ユーザーを登録できません";
+  
+  for (int count = 0; count < users.length; count++) {
+      if (users[count] == null) {
+          // todo:ユーザーを登録していない添え字の所に
+          // 入力したユーザーを登録する
+          // 登録できた際のメッセージ
+          users[count] = user;
+          result = "ユーザーを登録しました";
+          break;
+      }
+  }
+  
+  session.setAttribute("User", users);
 %>
 <!DOCTYPE html>
 <html>
@@ -54,7 +97,7 @@ a.button {
                 // todo:
                 // 現在は変数のみ定義している。
                 // Userクラスの情報取得用メソッドを呼んだ値をセットするように修正。
-                String msg = "";
+                String msg = user.returnUserInfo();
 
                 // ユーザー情報表示
                 out.println(msg);

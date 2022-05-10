@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_演習問題2</title>
+<title>Java応用_演習問題3</title>
 <style>
 body {
   border: solid 2px #000080;
@@ -29,7 +29,7 @@ body {
 </head>
 <body>
 
-  <h1>Java応用 - 演習問題2</h1>
+  <h1>Java応用 - 演習問題3</h1>
 
   <h2>ゲームアプリ実行ページ</h2>
 
@@ -44,6 +44,10 @@ body {
   <form action="StartAppServlet" method="post">
     <label>ユーザ名：</label>
     <input type="text" name="name">
+    <br>
+    <label>アプリ：</label>
+    <input type="radio" name="application" value="card" checked>トランプ
+    <input type="radio" name="application" value="game" >ゲーム
     <br>
     <button type="submit">実行</button>
   </form>

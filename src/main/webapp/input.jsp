@@ -31,7 +31,7 @@ body {
 
   <h2>人物登録</h2>
 
-  <form action="inputServlet" method="post">
+  <form action="InputServlet" method="post">
 
     <p>簡易登録</p>
 
@@ -45,7 +45,7 @@ body {
     <button type="submit" name="btn" value="simple">登録</button>
   </form>
 
-  <form action="inputServlet" method="post">
+  <form action="InputServlet" method="post">
 
     <p>詳細登録</p>
 

@@ -54,9 +54,9 @@ public class StartAppServlet extends HttpServlet {
 		    	// このif分の中で、GameAppクラスのstartメソッドを呼び出し、
 		    	// 戻り値をresultに代入してください。
 */		    
-			if(game == "card") {
+			if(game.equals("card")) {
 				result = cgm.start(name);
-			}else if(game == "game") {
+			}else if(game.equals("game")) {
 				result = gm.start(name);
 			}
 			

@@ -33,14 +33,15 @@ body {
 
   <h2>ゲームアプリ実行ページ</h2>
 
-  <div class="result">
-    <h3>アプリの実行結果</h3>
     <c:if test="${not empty result}">
+    <div class="result">
+    <h3>アプリの実行結果</h3>
 	<p>${requestScope.result}</p>
+	 </div>
+	
   </c:if>
     
-  </div>
-
+ 
   <form action="StartAppServlet" method="post">
     <label>ユーザ名：</label>
     <input type="text" name="name">

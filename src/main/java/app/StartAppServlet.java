@@ -38,6 +38,39 @@ public class StartAppServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-    	// ここに必要な処理を実装してください。
+    	request.setCharacterEncoding("UTF-8");
+    	
+    	String name = request.getParameter("name");
+	    String game = request.getParameter("application");
+    
+    	
+    	
+    	String result = "null";
+    	
+    	if (game.equals("card")) {
+    		CardGameApp card = new CardGameApp("トランプ");
+    		result = card.start(name);
+    		result += card.play();
+    	}else if (game.equals("darts")) {
+    		DartsGameApp darts = new DartsGameApp("ダーツ");
+    		result = darts.start(name);
+    		result += darts.play();
+    	}else if (game.equals("clock")) {
+    		ClockApp clock = new ClockApp();
+    		result = clock.start(name);
+    	}else if (game.equals("others")) {
+    		result = "アプリの実行に失敗しました。";
+    	}
+    	
+		/*
+		 * if (game.equals("card")) { CardGameApp card = new CardGameApp(); result =
+		 * card.start(name); }else if (game.equals("darts")) { DartsGameApp darts = new
+		 * DartsGameApp(); result = darts.start(name); }else if (game.equals("clock")) {
+		 * ClockApp clock = new ClockApp(); result = clock.start(name); }
+		 */
+    	
+    	request.setAttribute("result", result);
+    	
+    	request.getRequestDispatcher("/appStart.jsp").forward(request, response);
     }
 }

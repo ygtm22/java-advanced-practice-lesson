@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_演習問題3</title>
+<title>Java応用_演習問題4</title>
 <style>
 body {
   border: solid 2px #000080;
@@ -29,7 +29,7 @@ body {
 </head>
 <body>
 
-  <h1>Java応用 - 演習問題3</h1>
+  <h1>Java応用 - 演習問題4</h1>
 
   <h2>ゲームアプリ実行ページ</h2>
 
@@ -48,7 +48,9 @@ body {
     <br>
     <label>アプリ：</label>
     <input type="radio" name="application" value="card" checked>トランプ
-    <input type="radio" name="application" value="game" >ゲーム
+    <input type="radio" name="application" value="darts" >ダーツ
+    <input type="radio" name="application" value="clock" >時計
+    <input type="radio" name="application" value="others" >その他
     <br>
     <button type="submit">実行</button>
   </form>

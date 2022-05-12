@@ -46,7 +46,11 @@ public class ImportServlet extends HttpServlet {
          * 下記のコメントを参考に、必要な処理を実装してください
          */
 
-        // todo:入力値取得
+        //入力値取得
+    	request.setCharacterEncoding("UTF-8");
+    	
+    	String name = request.getParameter("name");
+    	String age = request.getParameter("age");
 
         // 取り込んだ内容を保持するための変数(オブジェクト)
         Animal animal = null;
@@ -54,6 +58,8 @@ public class ImportServlet extends HttpServlet {
         // todo:
         // オブジェクトを作成し、上記の変数にセット
         // 選択したデータに応じて、作成するオブジェクトが異なる
+        Cat cat = new Cat();
+        Rabbit rabbit = new Rabbit();
 
         // 結果画面に表示するメッセージ用の変数
         String result = "";
@@ -80,10 +86,12 @@ public class ImportServlet extends HttpServlet {
             // 読み込みを繰り返す
             while (text != null) {
                 // todo:行数加算
+            	count++;
 
                 // todo:
                 // 変数animalのフィールドに読み込んだ内容をセット
                 // 現在の行数(count)に応じて、セットするフィールドが異なる
+            	animal.
 
                 // ファイル内の次の1行を読み込み
                 text = br.readLine();
@@ -92,6 +100,7 @@ public class ImportServlet extends HttpServlet {
             // todo:
             // 変数animalのintroduceメソッドで表示する内容を取得し、
             // 変数resultにセット
+            result = animal.introduce();
 
 
             // ファイルの読み込みに失敗した場合、例外が発生するので、
@@ -100,6 +109,7 @@ public class ImportServlet extends HttpServlet {
             // todo:
             // ファイルの読み込みに失敗した時のメッセージを
             // 変数resultにセット
+        	result = "ファイルの読み込みに失敗しました。対象のファイル存在や文字コードを確認してください。";
 
         } finally {
             // 読み込んだファイルを閉じる
@@ -115,6 +125,7 @@ public class ImportServlet extends HttpServlet {
         }
 
         // todo:結果画面に表示するメッセージをセット
+        request.setAttribute("result", result);
 
         // 結果画面へ遷移
         request.getRequestDispatcher("result.jsp").forward(request, response);

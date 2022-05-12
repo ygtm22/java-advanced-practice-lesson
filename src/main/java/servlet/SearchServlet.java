@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +31,25 @@ public class SearchServlet extends HttpServlet {
             throws ServletException, IOException {
     	
     	// ここに必要な処理を記述してください。
+    	request.setCharacterEncoding("UTF-8");
+    	String english = request.getParameter("english");
+    	 
+    	Dictionary dictionary = new Dictionary();
+    	HashMap<String, String> dictionaryInfo = dictionary.getDictionaryInfo();
+    	
+    	dictionaryInfo.containsKey(english);
+    	
+    	String result = ""; 
+    	
+    	if (dictionaryInfo.containsKey(english)) {
+    		result = dictionaryInfo.get(english);
+    		request.setAttribute("result", "英語：" + english + "、" +  "日本語：" + result);
+    	}else {
+    		result = "見つかりませんでした。";
+    		request.setAttribute("result", result);
+    	}
+    	
+    	
 
         request.getRequestDispatcher("dictionary.jsp").forward(request, response);
     }

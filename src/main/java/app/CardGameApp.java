@@ -7,12 +7,12 @@ public class CardGameApp extends GameApp {
 	}
 	
 	public CardGameApp(String item) {
-		super(item);
-		this.item = item;
+		 super(item); 
+		setPlayTime(5);
 	}
 	
 	@Override
-	public String play() {
+	protected  String play() {
 		return ("ババ抜きを行います。");
 	}
 }

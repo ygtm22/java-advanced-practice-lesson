@@ -33,13 +33,20 @@ body {
 
   <h2>ゲームアプリ実行ページ</h2>
 
-    <c:if test="${not empty result}">
-    <div class="result">
-    <h3>アプリの実行結果</h3>
-	<p>${requestScope.result}</p>
-	 </div>
 	
-  </c:if>
+    	<c:if test="${not empty result}">
+    		<div class="result">
+    			<h3>アプリの実行結果</h3>
+				<p>${requestScope.result}</p>
+				<c:if test="${not empty playTime}">
+    				<label>${requestScope.playTime}</label>
+  				</c:if>
+			</div>
+  		</c:if>
+  		
+  	
+  	
+  	
     
  
   <form action="StartAppServlet" method="post">

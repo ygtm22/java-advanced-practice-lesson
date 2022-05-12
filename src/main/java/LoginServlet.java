@@ -42,12 +42,34 @@ public class LoginServlet extends HttpServlet {
 
 	      System.out.println(id);
 	      System.out.println(password);
+	      
+	      boolean hasError = false;
+	      
+	      if(Utility.isNullOrEmpty(id)){
+	    	  request.setAttribute("idErrMsg", "IDは必須です。");
+	    	  hasError = true;
+	      }
+	      
+	      if(Utility.isNullOrEmpty(password)){
+	    	  request.setAttribute("passErrMsg", "PASSは必須です。");
+	    	  hasError = true;
+	      }
+	      
+	      if(hasError) {
+	    	  request.getRequestDispatcher("/login.jsp").forward(request, response);
+	    	  return;
+	      }
 
 	      if (password.equals("axizuser") && id.equals("axiz") || password.equals("technocore") && id.equals("techno-pass")) {
 	    	  request.setAttribute("id", id);
 	    	  request.setAttribute("passwordMatch", password);
 	    	  request.getRequestDispatcher("/result.jsp").forward(request, response);
-			} /*
+			}else {
+				request.setAttribute("errMsg", "IDまたはPASSが間違っています。");
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
+			}
+	      
+	      /*
 				 * else { //request.setAttribute("passwordMatch", "ng");
 				 * request.getRequestDispatcher("/login.jsp").forward(request, response); }
 				 */
@@ -63,18 +85,6 @@ public class LoginServlet extends HttpServlet {
 	    	  request.setAttribute("pass_isEmpty", true);
 	    	  request.getRequestDispatcher("/login.jsp").forward(request, response);
 	      }
-	      
-			/*
-			 * if (!password.equals("axizuser") && id.equals("axiz") ||
-			 * password.equals("technocore") && id.equals("techno-pass")) {
-			 * request.getRequestDispatcher("/login.jsp").forward(request, response); }
-			 */
-			/*
-			 * if (Utility.isNullOrEmpty(id) && Utility.isNullOrEmpty(password)) {
-			 * request.setAttribute("id_isEmpty", true);
-			 * request.setAttribute("pass_isEmpty", true);
-			 * request.getRequestDispatcher("/login.jsp").forward(request, response); }
-			 */
 
 	      //request.getRequestDispatcher("/result.jsp").forward(request, response);
 	  }

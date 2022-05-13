@@ -30,5 +30,3 @@ body {
   <p>${result}</p>
 
   <a href="import.jsp">戻る</a>
-</body>
-</html>

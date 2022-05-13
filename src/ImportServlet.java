@@ -51,6 +51,7 @@ public class ImportServlet extends HttpServlet {
     	
     	String name = request.getParameter("name");
     	String age = request.getParameter("age");
+    	String data = request.getParameter("data");
 
         // 取り込んだ内容を保持するための変数(オブジェクト)
         Animal animal = null;
@@ -58,8 +59,15 @@ public class ImportServlet extends HttpServlet {
         // todo:
         // オブジェクトを作成し、上記の変数にセット
         // 選択したデータに応じて、作成するオブジェクトが異なる
-        Cat cat = new Cat();
-        Rabbit rabbit = new Rabbit();
+		 if (data.equals("cat")) { 
+			 Cat cat = new Cat(); 
+			 animal = cat;
+		}else if (data.equals("Rabbit")) {
+			Rabbit rabbit = new Rabbit();
+			animal = rabbit;
+		}
+		 
+		 int age = Integer.parseInt(age);
 
         // 結果画面に表示するメッセージ用の変数
         String result = "";
@@ -91,7 +99,11 @@ public class ImportServlet extends HttpServlet {
                 // todo:
                 // 変数animalのフィールドに読み込んだ内容をセット
                 // 現在の行数(count)に応じて、セットするフィールドが異なる
-            	animal.
+            	if (count == 1) {
+            		request.setAttribute("name", name);
+            	}else if (count == 2) {
+            		request.setAttribute("age", age);
+            	}
 
                 // ファイル内の次の1行を読み込み
                 text = br.readLine();
@@ -100,7 +112,7 @@ public class ImportServlet extends HttpServlet {
             // todo:
             // 変数animalのintroduceメソッドで表示する内容を取得し、
             // 変数resultにセット
-            result = animal.introduce();
+            result = request.setAttribute("animal", animal);
 
 
             // ファイルの読み込みに失敗した場合、例外が発生するので、

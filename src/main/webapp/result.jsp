@@ -27,7 +27,7 @@ body {
 
   <h2>取込結果</h2>
 
-  <p>${result}</p>
+  <p>${fn:escapeXml(result)}</p>
 
   <a href="import.jsp">戻る</a>
 </body>

@@ -4,7 +4,7 @@ public class Cat extends animal{
 	}
 	
 	public Cat(String name, int age) {
-		super(String, int);
+		super();
 	}
 	
 	@Override
@@ -14,6 +14,6 @@ public class Cat extends animal{
 	
 	@Override
 	public String getFilePath(){
-		return ("C:\work\cat.txt");
+		return ("Cat.tex");
 	}
 }

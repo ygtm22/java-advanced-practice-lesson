@@ -36,7 +36,7 @@ body {
       <option value="rabbit">ウサギ</option>
     </select>
     </p>
-    <button type="submit">実行</button>
+    <button type="submit" name="btn" value="details">実行</button>
   </form>
 </body>
 </html>

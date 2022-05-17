@@ -1,5 +1,5 @@
 <!-- GameAppクラス作成後、下記の記述が必要です。 -->
-<%@ page import="app.GameApp"%>
+<%@ page import="jp.co.axiz.app.GameApp"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
@@ -43,11 +43,6 @@ body {
   				</c:if>
 			</div>
   		</c:if>
-  		
-  	
-  	
-  	
-    
  
   <form action="StartAppServlet" method="post">
     <label>ユーザ名：</label>

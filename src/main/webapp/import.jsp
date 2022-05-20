@@ -29,7 +29,7 @@ body {
 
   <h3>取り込むデータを選択してください</h3>
 
-  <form action="importServlet" method="post">
+  <form action="ImportServlet" method="post">
     <p>
     <select name="data">
       <option value="cat">ネコ</option>

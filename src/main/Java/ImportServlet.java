@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class StartAppServlet
  */
-@WebServlet("/importServlet")
+@WebServlet("/ImportServlet")
 public class ImportServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -49,8 +49,6 @@ public class ImportServlet extends HttpServlet {
         //入力値取得
     	request.setCharacterEncoding("UTF-8");
     	
-    	String name = request.getParameter("name");
-    	String age = request.getParameter("age");
     	String data = request.getParameter("data");
 
         // 取り込んだ内容を保持するための変数(オブジェクト)
@@ -60,14 +58,10 @@ public class ImportServlet extends HttpServlet {
         // オブジェクトを作成し、上記の変数にセット
         // 選択したデータに応じて、作成するオブジェクトが異なる
 		 if (data.equals("cat")) { 
-			 Cat cat = new Cat(); 
-			 animal = cat;
-		}else if (data.equals("Rabbit")) {
-			Rabbit rabbit = new Rabbit();
-			animal = rabbit;
+			 animal = new Cat(); 
+		}else if (data.equals("rabbit")) {
+			animal = new Rabbit();
 		}
-		 
-		 int age = Integer.parseInt(age);
 
         // 結果画面に表示するメッセージ用の変数
         String result = "";
@@ -100,9 +94,11 @@ public class ImportServlet extends HttpServlet {
                 // 変数animalのフィールドに読み込んだ内容をセット
                 // 現在の行数(count)に応じて、セットするフィールドが異なる
             	if (count == 1) {
-            		request.setAttribute("name", name);
+            		animal.name = text;
             	}else if (count == 2) {
-            		request.setAttribute("age", age);
+            		int age = Integer.parseInt(text);
+            		
+            		animal.age = age;
             	}
 
                 // ファイル内の次の1行を読み込み
@@ -112,7 +108,7 @@ public class ImportServlet extends HttpServlet {
             // todo:
             // 変数animalのintroduceメソッドで表示する内容を取得し、
             // 変数resultにセット
-            result = request.setAttribute("animal", animal);
+            result = animal.introduce();
 
 
             // ファイルの読み込みに失敗した場合、例外が発生するので、
